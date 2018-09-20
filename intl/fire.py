@@ -2,26 +2,26 @@ import pyrebase, sys, requests, json, time
 
 
 config = {
-    'apiKey': "AIzaSyBpC9JIOlNziFTkRsmPQ6t3ODE68dirh9s",
-    'authDomain': "intl-521af.firebaseapp.com",
-    'databaseURL': "https://intl-521af.firebaseio.com",
-    'projectId': "intl-521af",
-    'storageBucket': "intl-521af.appspot.com",
-    'messagingSenderId': "786163992412"
+    'apiKey': "abcd",
+    'authDomain': "abcd",
+    'databaseURL': "abcd",
+    'projectId': "abcd",
+    'storageBucket': "abcd",
+    'messagingSenderId': "abcd"
 }
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
 user = auth.sign_in_with_email_and_password(
-    email='gorky0123@yahoo.com',
-    password='Google123!')
+    email='abcd',
+    password='abcd')
 
 
 class Fire:
     def __init__(self):
         self.db = firebase.database()
-        self.urls = json.loads(requests.get('https://intl-521af.firebaseio.com/urls.json').text)
+        self.urls = json.loads(requests.get('https://abcd/urls.json').text)
 
 
     def urls_stripped(self):
@@ -32,7 +32,7 @@ class Fire:
         while True:
             yn = raw_input('Are you sure you want to clear all URLs? (Y/n) ')
             if yn.lower() == 'y' or yn.lower() == 'yes':
-                r = requests.delete('https://intl-521af.firebaseio.com/urls.json')
+                r = requests.delete('https://abcd/urls.json')
                 print 'URLs cleared.'
                 break
             elif yn.lower() == 'n' or yn.lower() == 'no':
@@ -65,7 +65,7 @@ class Fire:
 
             d = {'.value': u}
             d = json.dumps(d)
-            r = requests.post('https://intl-521af.firebaseio.com/urls.json', data=d)
+            r = requests.post('https://abcd/urls.json', data=d)
             amt_added += 1
         
         if amt_added != 0:
@@ -83,7 +83,7 @@ class Fire:
             for full_url_key, full_url in self.urls.iteritems():
                 s = full_url.split('/')[-1]
                 if y[0].lower() == s.lower():
-                    r = requests.delete('https://intl-521af.firebaseio.com/urls/{}.json'.format(full_url_key))
+                    r = requests.delete('https://abcd/urls/{}.json'.format(full_url_key))
                     amt_removed += 1
                     removed.append(full_url)
 
